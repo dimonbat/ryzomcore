@@ -2,7 +2,7 @@ FROM ubuntu:14.04
 MAINTAINER Lucas Ramage <ramage.lucas@openmailbox.org>
 
 # Fetch Dependencies
-RUN apt-get update && apt-get upgrade && \
+RUN apt-get update && apt-get upgrade -y && \
 	apt-get install -y autoconf \
 		automake \
 		bison \
