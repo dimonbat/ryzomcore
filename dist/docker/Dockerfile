@@ -3,7 +3,15 @@ MAINTAINER Lucas Ramage <ramage.lucas@openmailbox.org>
 
 # Fetch Dependencies
 RUN apt-get update && apt-get upgrade -y && \
-	apt-get install -y autoconf \
+	apt-get install -y apache2 \
+		autoconf \
+		php5 \
+		php5-mysql \
+		php5-gd \
+		screen \
+		php5-mcrypt \
+		mysql-server \
+		mysql-client \
 		automake \
 		bison \
 		build-essential \
@@ -40,5 +48,7 @@ RUN hg clone -U https://bitbucket.org/ryzom/ryzomcore $CORE_DIR && \
 		-DWITH_SOUND=OFF -DWITH_STATIC=ON -DWITH_DRIVER_OPENGL=OFF \
 		-DWITH_DRIVER_OPENAL=OFF -DWITH_3D=OFF -DWITH_GUI=OFF ../code && \
 	make && make install && \
-	sed -i 's:/bin/sh:/bin/bash:g' $RYZOM_PATH/tools/scripts/linux/shard && \
-	sed -i 's:/bin/sh:/bin/bash:g' $RYZOM_PATH/server/shard.screen.rc
+	rm -rf "${CORE_DIR}"
+
+EXPOSE 80 40916
+ENTRYPOINT ["/usr/sbin/shardctl", "start"]
