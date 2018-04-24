@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  database:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ryzomcore
+
+  ryzomcore-shard:
+    build: .
+    image: hexgearinc/ryzomcore-shard:v0.12.0-dev
+    restart: always
+    ports:
+      - 80:80
+      - 40916:40916
