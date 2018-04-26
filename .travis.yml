@@ -1,14 +1,21 @@
 env:
   global:
-    - MAKEFLAGS="-j 3"
-
-notifications:
-  email: false
+    - MAKEFLAGS="-j2"
 
 sudo: required
+
+language: cpp
 
 services:
   - docker
 
 script:
 - docker build -f dist/docker/Dockerfile -t hexgearinc/ryzomcore-shard .
+
+deploy:
+  provider: script
+  script:
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    - docker push hexgearinc/ryzomcore-shard
+  on:
+    branch: docker
