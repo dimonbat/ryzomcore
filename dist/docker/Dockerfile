@@ -5,6 +5,7 @@ ENV SRC_DIR="/opt/ryzomcore" \
 	RYHOME="${SRC_DIR}/code" \
 	RYZOM_PATH="${RYHOME}/ryzom" \
 	PATH="${PATH}:${RYZOM_PATH}/tools/scripts/linux" \
+	MAKEOPTS="-j2" \
 	WWW_DIR="/srv/www/ryzom"
 
 RUN apt-get update && apt-get install -y \

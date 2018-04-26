@@ -1,7 +1,3 @@
-env:
-  global:
-    - MAKEFLAGS="-j2"
-
 sudo: required
 
 language: cpp
