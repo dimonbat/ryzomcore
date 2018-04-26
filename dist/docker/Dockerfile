@@ -7,7 +7,7 @@ ENV SRC_DIR="/opt/ryzomcore" \
 	PATH="${PATH}:${RYZOM_PATH}/tools/scripts/linux" \
 	WWW_DIR="/srv/www/ryzom"
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get install -y \
 	apache2 \
 	autoconf \
 	php5 \
